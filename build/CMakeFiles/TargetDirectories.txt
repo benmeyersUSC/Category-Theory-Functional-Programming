@@ -1,0 +1,8 @@
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles/edit_cache.dir
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles/rebuild_cache.dir
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Identity_Composition/CMakeFiles/identity_composition.dir
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Identity_Composition/CMakeFiles/edit_cache.dir
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Identity_Composition/CMakeFiles/rebuild_cache.dir
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Types_Functions/CMakeFiles/types_functions.dir
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Types_Functions/CMakeFiles/edit_cache.dir
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Types_Functions/CMakeFiles/rebuild_cache.dir

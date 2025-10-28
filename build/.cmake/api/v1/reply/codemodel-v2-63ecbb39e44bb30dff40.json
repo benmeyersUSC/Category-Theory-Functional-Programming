@@ -1,0 +1,101 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "Identity_Composition",
+					"jsonFile" : "directory-Identity_Composition-78663bf4af94a6111f43.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Identity_Composition",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "Types_Functions",
+					"jsonFile" : "directory-Types_Functions-cff1108a338c7032cd81.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Types_Functions",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "CategoryTheory",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "identity_composition::@5185be2721ca8a88443c",
+					"jsonFile" : "target-identity_composition-8e6cbce86d6c114cd3bc.json",
+					"name" : "identity_composition",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "types_functions::@b198017242d15cb8d609",
+					"jsonFile" : "target-types_functions-d648c8b444997e9f5986.json",
+					"name" : "types_functions",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build",
+		"source" : "/Users/benmeyers/Documents/Category-Theory-Functional-Programming"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}
