@@ -1,0 +1,4 @@
+**Identity and Composition**
+
+- These concepts make a lot of sense and I am eager to see how **Identity()** becomes useful.
+- **Composition()** is an awesome function and working with templates in C++ encourages really cool thinking. What I particularly love about type systems (and cool challenges within them such as **Composition()**) is that you can check so much of the viability of your program simply by compiling. What I care about in these files is the mappings between types, so I don't even care to use **BoolToFloat()** or its **Identity()**-augmented versions, I just want to make sure it all compiles. 
