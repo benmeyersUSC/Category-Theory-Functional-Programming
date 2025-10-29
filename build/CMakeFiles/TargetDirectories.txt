@@ -6,3 +6,6 @@
 /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Types_Functions/CMakeFiles/Types_Functions.dir
 /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Types_Functions/CMakeFiles/edit_cache.dir
 /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Types_Functions/CMakeFiles/rebuild_cache.dir
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Categories/CMakeFiles/Categories.dir
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Categories/CMakeFiles/edit_cache.dir
+/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/Categories/CMakeFiles/rebuild_cache.dir

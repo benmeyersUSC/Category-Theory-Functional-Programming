@@ -11,6 +11,7 @@ target=$1
 # Build and run path
 exe_path="build/$target/$target"
 
+
 # Check if the executable exists before running
 if [ ! -f "$exe_path" ]; then
   echo "Error: Executable not found at $exe_path"

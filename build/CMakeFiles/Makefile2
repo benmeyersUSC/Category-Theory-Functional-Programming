@@ -65,32 +65,55 @@ CMAKE_BINARY_DIR = /Users/benmeyers/Documents/Category-Theory-Functional-Program
 # The main recursive "all" target.
 all: Identity_Composition/all
 all: Types_Functions/all
+all: Categories/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: Identity_Composition/codegen
 codegen: Types_Functions/codegen
+codegen: Categories/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
 preinstall: Identity_Composition/preinstall
 preinstall: Types_Functions/preinstall
+preinstall: Categories/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: Identity_Composition/clean
 clean: Types_Functions/clean
+clean: Categories/clean
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory Categories
+
+# Recursive "all" directory target.
+Categories/all: Categories/CMakeFiles/Categories.dir/all
+.PHONY : Categories/all
+
+# Recursive "codegen" directory target.
+Categories/codegen: Categories/CMakeFiles/Categories.dir/codegen
+.PHONY : Categories/codegen
+
+# Recursive "preinstall" directory target.
+Categories/preinstall:
+.PHONY : Categories/preinstall
+
+# Recursive "clean" directory target.
+Categories/clean: Categories/CMakeFiles/Categories.dir/clean
+.PHONY : Categories/clean
 
 #=============================================================================
 # Directory level rules for directory Identity_Composition
 
 # Recursive "all" directory target.
-Identity_Composition/all: Identity_Composition/CMakeFiles/identity_composition.dir/all
+Identity_Composition/all: Identity_Composition/CMakeFiles/Identity_Composition.dir/all
 .PHONY : Identity_Composition/all
 
 # Recursive "codegen" directory target.
-Identity_Composition/codegen: Identity_Composition/CMakeFiles/identity_composition.dir/codegen
+Identity_Composition/codegen: Identity_Composition/CMakeFiles/Identity_Composition.dir/codegen
 .PHONY : Identity_Composition/codegen
 
 # Recursive "preinstall" directory target.
@@ -98,18 +121,18 @@ Identity_Composition/preinstall:
 .PHONY : Identity_Composition/preinstall
 
 # Recursive "clean" directory target.
-Identity_Composition/clean: Identity_Composition/CMakeFiles/identity_composition.dir/clean
+Identity_Composition/clean: Identity_Composition/CMakeFiles/Identity_Composition.dir/clean
 .PHONY : Identity_Composition/clean
 
 #=============================================================================
 # Directory level rules for directory Types_Functions
 
 # Recursive "all" directory target.
-Types_Functions/all: Types_Functions/CMakeFiles/types_functions.dir/all
+Types_Functions/all: Types_Functions/CMakeFiles/Types_Functions.dir/all
 .PHONY : Types_Functions/all
 
 # Recursive "codegen" directory target.
-Types_Functions/codegen: Types_Functions/CMakeFiles/types_functions.dir/codegen
+Types_Functions/codegen: Types_Functions/CMakeFiles/Types_Functions.dir/codegen
 .PHONY : Types_Functions/codegen
 
 # Recursive "preinstall" directory target.
@@ -117,72 +140,104 @@ Types_Functions/preinstall:
 .PHONY : Types_Functions/preinstall
 
 # Recursive "clean" directory target.
-Types_Functions/clean: Types_Functions/CMakeFiles/types_functions.dir/clean
+Types_Functions/clean: Types_Functions/CMakeFiles/Types_Functions.dir/clean
 .PHONY : Types_Functions/clean
 
 #=============================================================================
-# Target rules for target Identity_Composition/CMakeFiles/identity_composition.dir
+# Target rules for target Identity_Composition/CMakeFiles/Identity_Composition.dir
 
 # All Build rule for target.
-Identity_Composition/CMakeFiles/identity_composition.dir/all:
-	$(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/identity_composition.dir/build.make Identity_Composition/CMakeFiles/identity_composition.dir/depend
-	$(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/identity_composition.dir/build.make Identity_Composition/CMakeFiles/identity_composition.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles --progress-num=1,2 "Built target identity_composition"
-.PHONY : Identity_Composition/CMakeFiles/identity_composition.dir/all
+Identity_Composition/CMakeFiles/Identity_Composition.dir/all:
+	$(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/Identity_Composition.dir/build.make Identity_Composition/CMakeFiles/Identity_Composition.dir/depend
+	$(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/Identity_Composition.dir/build.make Identity_Composition/CMakeFiles/Identity_Composition.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles --progress-num=3,4 "Built target Identity_Composition"
+.PHONY : Identity_Composition/CMakeFiles/Identity_Composition.dir/all
 
 # Build rule for subdir invocation for target.
-Identity_Composition/CMakeFiles/identity_composition.dir/rule: cmake_check_build_system
+Identity_Composition/CMakeFiles/Identity_Composition.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Identity_Composition/CMakeFiles/identity_composition.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Identity_Composition/CMakeFiles/Identity_Composition.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles 0
-.PHONY : Identity_Composition/CMakeFiles/identity_composition.dir/rule
+.PHONY : Identity_Composition/CMakeFiles/Identity_Composition.dir/rule
 
 # Convenience name for target.
-identity_composition: Identity_Composition/CMakeFiles/identity_composition.dir/rule
-.PHONY : identity_composition
+Identity_Composition: Identity_Composition/CMakeFiles/Identity_Composition.dir/rule
+.PHONY : Identity_Composition
 
 # codegen rule for target.
-Identity_Composition/CMakeFiles/identity_composition.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/identity_composition.dir/build.make Identity_Composition/CMakeFiles/identity_composition.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles --progress-num=1,2 "Finished codegen for target identity_composition"
-.PHONY : Identity_Composition/CMakeFiles/identity_composition.dir/codegen
+Identity_Composition/CMakeFiles/Identity_Composition.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/Identity_Composition.dir/build.make Identity_Composition/CMakeFiles/Identity_Composition.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles --progress-num=3,4 "Finished codegen for target Identity_Composition"
+.PHONY : Identity_Composition/CMakeFiles/Identity_Composition.dir/codegen
 
 # clean rule for target.
-Identity_Composition/CMakeFiles/identity_composition.dir/clean:
-	$(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/identity_composition.dir/build.make Identity_Composition/CMakeFiles/identity_composition.dir/clean
-.PHONY : Identity_Composition/CMakeFiles/identity_composition.dir/clean
+Identity_Composition/CMakeFiles/Identity_Composition.dir/clean:
+	$(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/Identity_Composition.dir/build.make Identity_Composition/CMakeFiles/Identity_Composition.dir/clean
+.PHONY : Identity_Composition/CMakeFiles/Identity_Composition.dir/clean
 
 #=============================================================================
-# Target rules for target Types_Functions/CMakeFiles/types_functions.dir
+# Target rules for target Types_Functions/CMakeFiles/Types_Functions.dir
 
 # All Build rule for target.
-Types_Functions/CMakeFiles/types_functions.dir/all:
-	$(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/types_functions.dir/build.make Types_Functions/CMakeFiles/types_functions.dir/depend
-	$(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/types_functions.dir/build.make Types_Functions/CMakeFiles/types_functions.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles --progress-num=3,4 "Built target types_functions"
-.PHONY : Types_Functions/CMakeFiles/types_functions.dir/all
+Types_Functions/CMakeFiles/Types_Functions.dir/all:
+	$(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/Types_Functions.dir/build.make Types_Functions/CMakeFiles/Types_Functions.dir/depend
+	$(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/Types_Functions.dir/build.make Types_Functions/CMakeFiles/Types_Functions.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles --progress-num=5,6 "Built target Types_Functions"
+.PHONY : Types_Functions/CMakeFiles/Types_Functions.dir/all
 
 # Build rule for subdir invocation for target.
-Types_Functions/CMakeFiles/types_functions.dir/rule: cmake_check_build_system
+Types_Functions/CMakeFiles/Types_Functions.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Types_Functions/CMakeFiles/types_functions.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Types_Functions/CMakeFiles/Types_Functions.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles 0
-.PHONY : Types_Functions/CMakeFiles/types_functions.dir/rule
+.PHONY : Types_Functions/CMakeFiles/Types_Functions.dir/rule
 
 # Convenience name for target.
-types_functions: Types_Functions/CMakeFiles/types_functions.dir/rule
-.PHONY : types_functions
+Types_Functions: Types_Functions/CMakeFiles/Types_Functions.dir/rule
+.PHONY : Types_Functions
 
 # codegen rule for target.
-Types_Functions/CMakeFiles/types_functions.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/types_functions.dir/build.make Types_Functions/CMakeFiles/types_functions.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles --progress-num=3,4 "Finished codegen for target types_functions"
-.PHONY : Types_Functions/CMakeFiles/types_functions.dir/codegen
+Types_Functions/CMakeFiles/Types_Functions.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/Types_Functions.dir/build.make Types_Functions/CMakeFiles/Types_Functions.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles --progress-num=5,6 "Finished codegen for target Types_Functions"
+.PHONY : Types_Functions/CMakeFiles/Types_Functions.dir/codegen
 
 # clean rule for target.
-Types_Functions/CMakeFiles/types_functions.dir/clean:
-	$(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/types_functions.dir/build.make Types_Functions/CMakeFiles/types_functions.dir/clean
-.PHONY : Types_Functions/CMakeFiles/types_functions.dir/clean
+Types_Functions/CMakeFiles/Types_Functions.dir/clean:
+	$(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/Types_Functions.dir/build.make Types_Functions/CMakeFiles/Types_Functions.dir/clean
+.PHONY : Types_Functions/CMakeFiles/Types_Functions.dir/clean
+
+#=============================================================================
+# Target rules for target Categories/CMakeFiles/Categories.dir
+
+# All Build rule for target.
+Categories/CMakeFiles/Categories.dir/all:
+	$(MAKE) $(MAKESILENT) -f Categories/CMakeFiles/Categories.dir/build.make Categories/CMakeFiles/Categories.dir/depend
+	$(MAKE) $(MAKESILENT) -f Categories/CMakeFiles/Categories.dir/build.make Categories/CMakeFiles/Categories.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles --progress-num=1,2 "Built target Categories"
+.PHONY : Categories/CMakeFiles/Categories.dir/all
+
+# Build rule for subdir invocation for target.
+Categories/CMakeFiles/Categories.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Categories/CMakeFiles/Categories.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles 0
+.PHONY : Categories/CMakeFiles/Categories.dir/rule
+
+# Convenience name for target.
+Categories: Categories/CMakeFiles/Categories.dir/rule
+.PHONY : Categories
+
+# codegen rule for target.
+Categories/CMakeFiles/Categories.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f Categories/CMakeFiles/Categories.dir/build.make Categories/CMakeFiles/Categories.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/benmeyers/Documents/Category-Theory-Functional-Programming/build/CMakeFiles --progress-num=1,2 "Finished codegen for target Categories"
+.PHONY : Categories/CMakeFiles/Categories.dir/codegen
+
+# clean rule for target.
+Categories/CMakeFiles/Categories.dir/clean:
+	$(MAKE) $(MAKESILENT) -f Categories/CMakeFiles/Categories.dir/build.make Categories/CMakeFiles/Categories.dir/clean
+.PHONY : Categories/CMakeFiles/Categories.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -6,3 +6,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(Identity_Composition)
 add_subdirectory(Types_Functions)
+add_subdirectory(Categories)

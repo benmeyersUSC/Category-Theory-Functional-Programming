@@ -117,25 +117,25 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-Identity_Composition/CMakeFiles/identity_composition.dir/rule:
-	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Identity_Composition/CMakeFiles/identity_composition.dir/rule
-.PHONY : Identity_Composition/CMakeFiles/identity_composition.dir/rule
+Identity_Composition/CMakeFiles/Identity_Composition.dir/rule:
+	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Identity_Composition/CMakeFiles/Identity_Composition.dir/rule
+.PHONY : Identity_Composition/CMakeFiles/Identity_Composition.dir/rule
 
 # Convenience name for target.
-identity_composition: Identity_Composition/CMakeFiles/identity_composition.dir/rule
-.PHONY : identity_composition
+Identity_Composition: Identity_Composition/CMakeFiles/Identity_Composition.dir/rule
+.PHONY : Identity_Composition
 
 # fast build rule for target.
-identity_composition/fast:
-	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/identity_composition.dir/build.make Identity_Composition/CMakeFiles/identity_composition.dir/build
-.PHONY : identity_composition/fast
+Identity_Composition/fast:
+	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/Identity_Composition.dir/build.make Identity_Composition/CMakeFiles/Identity_Composition.dir/build
+.PHONY : Identity_Composition/fast
 
 Identity_Composition.o: Identity_Composition.cpp.o
 .PHONY : Identity_Composition.o
 
 # target to build an object file
 Identity_Composition.cpp.o:
-	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/identity_composition.dir/build.make Identity_Composition/CMakeFiles/identity_composition.dir/Identity_Composition.cpp.o
+	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/Identity_Composition.dir/build.make Identity_Composition/CMakeFiles/Identity_Composition.dir/Identity_Composition.cpp.o
 .PHONY : Identity_Composition.cpp.o
 
 Identity_Composition.i: Identity_Composition.cpp.i
@@ -143,7 +143,7 @@ Identity_Composition.i: Identity_Composition.cpp.i
 
 # target to preprocess a source file
 Identity_Composition.cpp.i:
-	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/identity_composition.dir/build.make Identity_Composition/CMakeFiles/identity_composition.dir/Identity_Composition.cpp.i
+	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/Identity_Composition.dir/build.make Identity_Composition/CMakeFiles/Identity_Composition.dir/Identity_Composition.cpp.i
 .PHONY : Identity_Composition.cpp.i
 
 Identity_Composition.s: Identity_Composition.cpp.s
@@ -151,7 +151,7 @@ Identity_Composition.s: Identity_Composition.cpp.s
 
 # target to generate assembly for a file
 Identity_Composition.cpp.s:
-	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/identity_composition.dir/build.make Identity_Composition/CMakeFiles/identity_composition.dir/Identity_Composition.cpp.s
+	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/Identity_Composition.dir/build.make Identity_Composition/CMakeFiles/Identity_Composition.dir/Identity_Composition.cpp.s
 .PHONY : Identity_Composition.cpp.s
 
 # Help Target
@@ -162,7 +162,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... identity_composition"
+	@echo "... Identity_Composition"
 	@echo "... Identity_Composition.o"
 	@echo "... Identity_Composition.i"
 	@echo "... Identity_Composition.s"

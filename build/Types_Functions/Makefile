@@ -117,25 +117,25 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-Types_Functions/CMakeFiles/types_functions.dir/rule:
-	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Types_Functions/CMakeFiles/types_functions.dir/rule
-.PHONY : Types_Functions/CMakeFiles/types_functions.dir/rule
+Types_Functions/CMakeFiles/Types_Functions.dir/rule:
+	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Types_Functions/CMakeFiles/Types_Functions.dir/rule
+.PHONY : Types_Functions/CMakeFiles/Types_Functions.dir/rule
 
 # Convenience name for target.
-types_functions: Types_Functions/CMakeFiles/types_functions.dir/rule
-.PHONY : types_functions
+Types_Functions: Types_Functions/CMakeFiles/Types_Functions.dir/rule
+.PHONY : Types_Functions
 
 # fast build rule for target.
-types_functions/fast:
-	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/types_functions.dir/build.make Types_Functions/CMakeFiles/types_functions.dir/build
-.PHONY : types_functions/fast
+Types_Functions/fast:
+	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/Types_Functions.dir/build.make Types_Functions/CMakeFiles/Types_Functions.dir/build
+.PHONY : Types_Functions/fast
 
 Types_Functions.o: Types_Functions.cpp.o
 .PHONY : Types_Functions.o
 
 # target to build an object file
 Types_Functions.cpp.o:
-	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/types_functions.dir/build.make Types_Functions/CMakeFiles/types_functions.dir/Types_Functions.cpp.o
+	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/Types_Functions.dir/build.make Types_Functions/CMakeFiles/Types_Functions.dir/Types_Functions.cpp.o
 .PHONY : Types_Functions.cpp.o
 
 Types_Functions.i: Types_Functions.cpp.i
@@ -143,7 +143,7 @@ Types_Functions.i: Types_Functions.cpp.i
 
 # target to preprocess a source file
 Types_Functions.cpp.i:
-	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/types_functions.dir/build.make Types_Functions/CMakeFiles/types_functions.dir/Types_Functions.cpp.i
+	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/Types_Functions.dir/build.make Types_Functions/CMakeFiles/Types_Functions.dir/Types_Functions.cpp.i
 .PHONY : Types_Functions.cpp.i
 
 Types_Functions.s: Types_Functions.cpp.s
@@ -151,7 +151,7 @@ Types_Functions.s: Types_Functions.cpp.s
 
 # target to generate assembly for a file
 Types_Functions.cpp.s:
-	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/types_functions.dir/build.make Types_Functions/CMakeFiles/types_functions.dir/Types_Functions.cpp.s
+	cd /Users/benmeyers/Documents/Category-Theory-Functional-Programming/build && $(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/Types_Functions.dir/build.make Types_Functions/CMakeFiles/Types_Functions.dir/Types_Functions.cpp.s
 .PHONY : Types_Functions.cpp.s
 
 # Help Target
@@ -162,7 +162,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... types_functions"
+	@echo "... Types_Functions"
 	@echo "... Types_Functions.o"
 	@echo "... Types_Functions.i"
 	@echo "... Types_Functions.s"

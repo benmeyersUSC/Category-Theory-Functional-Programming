@@ -1,4 +1,4 @@
-Types_Functions/CMakeFiles/types_functions.dir/Types_Functions.cpp.o: \
+Types_Functions/CMakeFiles/Types_Functions.dir/Types_Functions.cpp.o: \
   /Users/benmeyers/Documents/Category-Theory-Functional-Programming/Types_Functions/Types_Functions.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \

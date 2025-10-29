@@ -1,4 +1,4 @@
-Identity_Composition/CMakeFiles/identity_composition.dir/Identity_Composition.cpp.o: \
+Identity_Composition/CMakeFiles/Identity_Composition.dir/Identity_Composition.cpp.o: \
   /Users/benmeyers/Documents/Category-Theory-Functional-Programming/Identity_Composition/Identity_Composition.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \

@@ -1,11 +1,11 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/identity_composition.dir/Identity_Composition.cpp.o"
-  "CMakeFiles/identity_composition.dir/Identity_Composition.cpp.o.d"
-  "identity_composition"
-  "identity_composition.pdb"
+  "CMakeFiles/Identity_Composition.dir/Identity_Composition.cpp.o"
+  "CMakeFiles/Identity_Composition.dir/Identity_Composition.cpp.o.d"
+  "Identity_Composition"
+  "Identity_Composition.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
 foreach(lang CXX)
-  include(CMakeFiles/identity_composition.dir/cmake_clean_${lang}.cmake OPTIONAL)
+  include(CMakeFiles/Identity_Composition.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

@@ -117,30 +117,43 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named identity_composition
+# Target rules for targets named Identity_Composition
 
 # Build rule for target.
-identity_composition: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 identity_composition
-.PHONY : identity_composition
+Identity_Composition: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Identity_Composition
+.PHONY : Identity_Composition
 
 # fast build rule for target.
-identity_composition/fast:
-	$(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/identity_composition.dir/build.make Identity_Composition/CMakeFiles/identity_composition.dir/build
-.PHONY : identity_composition/fast
+Identity_Composition/fast:
+	$(MAKE) $(MAKESILENT) -f Identity_Composition/CMakeFiles/Identity_Composition.dir/build.make Identity_Composition/CMakeFiles/Identity_Composition.dir/build
+.PHONY : Identity_Composition/fast
 
 #=============================================================================
-# Target rules for targets named types_functions
+# Target rules for targets named Types_Functions
 
 # Build rule for target.
-types_functions: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 types_functions
-.PHONY : types_functions
+Types_Functions: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Types_Functions
+.PHONY : Types_Functions
 
 # fast build rule for target.
-types_functions/fast:
-	$(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/types_functions.dir/build.make Types_Functions/CMakeFiles/types_functions.dir/build
-.PHONY : types_functions/fast
+Types_Functions/fast:
+	$(MAKE) $(MAKESILENT) -f Types_Functions/CMakeFiles/Types_Functions.dir/build.make Types_Functions/CMakeFiles/Types_Functions.dir/build
+.PHONY : Types_Functions/fast
+
+#=============================================================================
+# Target rules for targets named Categories
+
+# Build rule for target.
+Categories: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Categories
+.PHONY : Categories
+
+# fast build rule for target.
+Categories/fast:
+	$(MAKE) $(MAKESILENT) -f Categories/CMakeFiles/Categories.dir/build.make Categories/CMakeFiles/Categories.dir/build
+.PHONY : Categories/fast
 
 # Help Target
 help:
@@ -150,8 +163,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... identity_composition"
-	@echo "... types_functions"
+	@echo "... Categories"
+	@echo "... Identity_Composition"
+	@echo "... Types_Functions"
 .PHONY : help
 
 
