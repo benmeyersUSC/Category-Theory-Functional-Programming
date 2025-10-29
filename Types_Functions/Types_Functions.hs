@@ -18,7 +18,7 @@ unit :: a -> ()
 unit _ = ()
 
 
-{-memoize is very hard in Haskel...-}
+{-memoize is very hard in Haskell...-}
 
 
 

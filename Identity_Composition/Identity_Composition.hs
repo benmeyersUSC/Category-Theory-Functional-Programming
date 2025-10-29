@@ -18,5 +18,5 @@ comp :: (b -> c) -> (a -> b) -> (a -> c)
 comp m n = m . n
 
 
-main = putStrLn "Hello World"
-
+btf :: Bool -> Float
+btf x = (comp g f) x

@@ -16,10 +16,10 @@ template<typename T1, typename T2>
 std::function<T2(T1)> memoize(std::function<T2(T1)> f){
     // memoized version makes this and saves it
     // the lambda it returns captures
-    
     std::unordered_map<T1, T2>* memo = new std::unordered_map<T1, T2>();
+
     return [f, memo](T1 x) mutable { // mutable means captures can be changed
-        if (memo->find(x) == memo->end()){
+        if (memo->count(x) == 0){
             // to see if it's working!
             std::cout << "[adding " << x << " to the memo]";
             memo->operator[](x) = f(x);
@@ -35,7 +35,6 @@ std::function<float(int)> TimesTwo = [](int x){return x*2.0f;};
 // how many functions are there from bool -> bool? 
 // 2!
 // identity and inverse identity
-
 bool id (bool b){return b;}
 bool nId (bool b){return !b;}
 
@@ -56,7 +55,8 @@ int main()
             return Factorial(x-1) * x;
         }
     );    
-
+    // the reason we have to construct it within the memoize call is that is uses recursion
+    // we want to recursively call the memoized version, not some pre-memoized Factorial
 
     PrintFunction(Factorial, 27);
     PrintFunction(Factorial, 27);
