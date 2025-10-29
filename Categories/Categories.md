@@ -59,18 +59,25 @@
 **Challenges**
 - What kind of order is this?
 - - a set of sets with the inclusion operation. *A* is included in *B* if every element of *A* is in *B*
-- - - **Preorder** because *A* inc *A* is true and if *A* inc *B* and *B* inc *C* then *A* inc *C*. not *partial* because *A* and *B* need not be the same; it can be hierarchical. 
+- - - It fulfills **Preorder**
+- - - -  *A* inc *A* is true and if *A* inc *B* and *B* inc *C* then *A* inc *C* 
+- - - Further it is **Partial** 
+- - - - *A* inc *B* and *B* inc *A* --> *A* == *B*
 - - C++ types with the following relationship: *T1* is a subtype of *T2* if a pointer to *T1* can be passed to a function expecting a *T2* argument and compiles
-- - - seems like **preorder** as well, because *T1* needs to be a child of *T2* in order for this to work. it will be evaluated as a *T2* and only can if its a child. it is not *partial* because if *Tx* and *Ty* are both subtypes of *Tz* they *emphatically cannot* be the same
+- - - seems like **preorder** as well, because *T1* needs to be a child of *T2* in order for this to work. it will be evaluated as a *T2* and only can if its a child. 
+- - - while it first seems **partial** as well (because if *T1* works for *T2* and *T2* works for *T1*, right?)
+- - - - it is not because, for example, *float* and *int* can be passed into params of each other and compile, but these two types are not the same. same can go for similar user defined stuff. 
 - Given that **bool** is a set with two types **True** and **False**, show that they form two monoidal sets with respect to **&&** and **||**
 - - **&&**
 - - - mempty = **True**
 - - - - **True** && **True** == **True**
 - - - - **False** && **True** == **False**
 - - - mappend = **&&**
+- - - associativity: **True** && (**True** && **False**) == (**True** && **True**) && **False**
 - - **||**
 - - - mempty = **False**
 - - - - **True** || **False** == **True**
 - - - - **False** || **False** == **False**
 - - - mappend = **||**
+- - - associativity: **True** || (**True** || **False**) == (**True** || **True**) || **False**
 - - *shown as a proposition in code in Composition.cpp*
