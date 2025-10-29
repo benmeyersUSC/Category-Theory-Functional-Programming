@@ -46,12 +46,14 @@
 - - - - - instead of giving rules of addition, we could just give rules of adder composition and we'd lose no information. the adders compose because functions compose, and we have the identity function adder0
 - - - - mapping from *integers* to *adders* corresponds directly to the interpretation of *mappend*: m -> (m -> m)
 - - - - - from element of a monoid set to a set of functions acting on that set
-- - - - **now forget the integers themselves and just imagine a single object with a set of *adder* functions**
+- - - - **now forget the integers themselves and just imagine a single (dummy) object with a set of *adder* functions**
 - - - - - Monoid is a single element category. all can be described as a single object category with a set of morphisms that follow the appropriate rules of composition
 - - - - we can always extract a set from a single object category: the set of morphisms
 - - - - - in other words, we have a single element and a **Hom-set** containing all of the morphisms
 - - - - - **Define binary operator:** the monoidal product of two set elements (morphisms in the hom-set) is the composition of those two morphisms
 - - - - - - the product of two elements *f* and *g* from Hom_M(m, m) = *f* . *g*
+- - - - - - whereas in integers, the binary operator + is associative, in our monoid category, we have composable adder morphisms. adder0 is the identity morphism. it may not be about *using* the monoid category, but just showing the DIRECT correspondence between *elements of **N*** to *morphisms of **M***, *binary operator over **N*** to *composition of morphisms in **M***, identity 0 and adder0, and set **N** and *Hom-set_**M**(dummy)*
+- - - - - - - like Church Numerals defining integers
 - - - - - - can always recover set-monoid from a category monoid
 
 
