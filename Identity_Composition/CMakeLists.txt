@@ -1,3 +1,3 @@
-add_executable(identity_composition
+add_executable(Identity_Composition
     Identity_Composition.cpp
 )
