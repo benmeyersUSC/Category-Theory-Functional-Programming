@@ -46,5 +46,3 @@ matmul (Matrix m1) (Matrix m2) = Matrix [[]]
 m14 :: Matrix N1 N4 Integer
 m14 = matmul m13 m34
 
-
-matmul11t
