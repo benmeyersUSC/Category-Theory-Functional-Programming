@@ -1,5 +1,4 @@
 import Data.Char {-for toUpper-}
-main = putStrLn "Kleisi"
 
 {-parameterized by variable type a-}
 type Writer a = (a, String)
@@ -90,7 +89,9 @@ safeRootReciprocal = safeRoot >==> safeReciprocal
 
 
 
-
-
-
+main = do
+    let _27_ = Just 0.00137 >>= safeRootReciprocal 
+    case _27_ of
+        Nothing -> putStrLn "Invalid calculation"
+        Just result -> putStrLn $ "27 ~ " ++ show result
 
