@@ -1,5 +1,5 @@
 import Data.Char {-for toUpper-}
-main = putStrLn "Hello World"
+main = putStrLn "Kleisi"
 
 {-parameterized by variable type a-}
 type Writer a = (a, String)
@@ -44,6 +44,53 @@ process = upCase >=> toWords
     
     we define process not by what it does to inputs but WHAT IT IS
 -}
+
+
+
+{-
+
+template<class A> class optional{
+    bool _isValid;
+    A _value;
+public:
+    optional(): _isValid(false){}
+    optional(A v): _isValid(true), _value(v){}
+    bool isValid()const{return _isValid;}
+    A value()const{return _value;}
+};
+
+
+-}
+
+type Partial a = Maybe a
+
+(>==>) :: (a -> Maybe b) -> (b -> Maybe c) -> (a -> Maybe c)
+m1 >==> m2 = \x ->
+    case m1 x of 
+        Nothing -> Nothing
+        Just y -> m2 y
+        
+
+returnPartial :: a -> Partial a
+returnPartial x = Just x
+
+safeRoot :: Double -> Partial Double
+safeRoot x
+    | x >= 0 = Just (sqrt x)
+    | otherwise = Nothing
+    
+safeReciprocal :: Double -> Partial Double
+safeReciprocal x
+    | x /= 0 = Just (1.0 / x)
+    | otherwise = Nothing
+    
+    
+safeRootReciprocal :: Double -> Partial Double
+safeRootReciprocal = safeRoot >==> safeReciprocal
+
+
+
+
 
 
 
