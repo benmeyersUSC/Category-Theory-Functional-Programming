@@ -56,8 +56,7 @@ using Writer = pair<Z, string>;
 
 Writer<string> toUpper(string s){
     string result;
-    int (*toupperp)(int) = &toupper;
-    transform(begin(s), end(s), back_inserter(result), toupperp);
+    transform(begin(s), end(s), back_inserter(result), [](int x){return x - ((x >= 'a' && x <= 'z') * 32);});
     return make_pair(result, "toUpper ");
 }
 
