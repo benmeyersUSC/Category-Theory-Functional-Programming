@@ -230,3 +230,31 @@ factorizerCo i j (Left a) = i a
 factorizerCo i j (Right b) = j b
 
 
+
+
+-- Product Bijection of Hom Set
+--      C -> (A, B)  <-->  ((C -> A), (C -> B))  
+toPair :: (c -> (a, b)) -> ((c -> a), (c -> b))
+toPair h = (fst . h, snd . h)-- youre gonna give me such an h? ill use it then extract
+
+fromPair :: ((c -> a), (c -> b)) -> (c -> (a, b))
+fromPair (f, g) = \x -> (f x, g x)
+{-
+these two functions are complete inverses of each other, so they're a bijection
+    hom set equivalence: Hom(C, A x B) = Hom(C, A) x Hom(C, B)
+-}
+
+-- Coproduct Bijection of Hom Set: Hom(A + B, C) = Hom(A, C) x Hom(B, C)
+toPair' :: (Either a b -> c) -> ((a -> c), (b -> c))
+toPair' h = (h . Left, h . Right)-- gimme either and I'll map it to c
+
+fromPair' :: ((a -> c), (b -> c)) -> (Either a b -> c)
+fromPair' (f, g) = \x -> case x of
+    Left a -> f a
+    Right b -> g b
+    
+{-
+these functions are not IN the hom-sets of these types; it takes the hom-sets as types!
+these functions go from hom-set to hom-set by being defined for variables-type functions!
+-} 
+    
