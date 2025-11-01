@@ -223,6 +223,7 @@ the general factorizer from C -> C' or i -> i' and j -> j' is below
 -}
 factorizerCo :: (a -> c) -> (b -> c) -> (Either a b -> c)
 factorizerCo i j (Left a) = i a
+-- these are curry pattern matches
 factorizerCo i j (Right b) = j b
 
 

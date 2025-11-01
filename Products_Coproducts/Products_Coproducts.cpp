@@ -1,9 +1,9 @@
 #include <functional>
+#include <map>
+#include <unordered_map>
+#include <iostream>
 using std::function;
 
-// Product : pair
-template<class A, class B>
-using Product = std::pair<A, B>;
 
 template<class A, class B>
 struct Product{
@@ -19,11 +19,11 @@ struct Product{
     }
 
     // factorizer
-    template<class C, class A, class B>
-    function<Product<A,B>(C)> factorizer(function<A(Product<A,B>)> p, function<B(Product<A,B>)> q){
+    template<class C>
+    function<Product<A,B>(C)> factorizer(function<A(C)> p, function<B(C)> q){
         return [p,q](C x){
-            return Product<A,B>(p x, q x);
-        }
+            return Product<A,B>(p(x), q(x));
+        };
     }
 };
 
@@ -46,14 +46,23 @@ struct Coproduct {
         isA = false;
     }
 
-    // and this is the factorizer!
-    template<class A, class B>
-    function<Coproduct<A,B>(Coproduct<A,B>)> factorizerCo(function<Coproduct<A,B>(A)> i, function<Coproduct<A,B>(B)> j){
+    // and this is the factorizer 
+    template<class C>
+    function<C(Coproduct<A,B>)> factorizerCo(function<C(A)> i, function<C(B)> j){
         return [i, j](Coproduct<A,B> e){
-            if (e.isA){return Coproduct(e.a);}
-            return Coproduct(e.b);
+            if (e.isA){return i(e.a);}
+            return j(e.b);
         };
     }
+
+    /*
+    The Haskell beauty:
+
+        factorizerCo :: (a -> c) -> (b -> c) -> (Either a b -> c)
+        factorizerCo i j (Left a) = i a
+        factorizerCo i j (Right b) = j b
+    
+    */
 };
 
 
@@ -107,7 +116,7 @@ We need:
         
         J just takes in the bool, so to replicate (to enboofify), we have to apply the superfluous transformation that J' does..
 */
-int m(Coproduct<int,bool>& const e){
+int m(const Coproduct<int,bool>& e){
     if (e.isA){
         return e.a;
     }
@@ -163,7 +172,7 @@ int i2(int n){
 int j2(bool b){return b ? 0 : 1;}
 
 // boom
-int m2(Coproduct<int,bool>& const e){
+int m2(const Coproduct<int,bool>& e){
     if (e.isA){
         if (e.a > 0){return e.a - 2;}
         else{return e.a;}
@@ -174,3 +183,22 @@ int m2(Coproduct<int,bool>& const e){
 // Coproduct is better
 // same reasoning in the inverse. we could define the boolean case two ways
 
+
+int main(){
+    unsigned p = 9*3;
+    unsigned cop = 9+3;
+    std::unordered_map<const char*, unsigned> nts = {
+        {"Product", p},
+        {"Coproduct", cop}
+    };
+    Coproduct<std::map<const char*, unsigned>,std::unordered_map<const char*, unsigned>> Map{nts};
+    
+    if (Map.isA){
+
+    }
+    else{
+        std::cout << "Product: " << Map.b["Product"] << ", Coproduct: " << Map.b["Coproduct"] << std::endl;
+    }
+
+    return 0;
+}
