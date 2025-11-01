@@ -164,14 +164,17 @@ Coproduct instea flips the arrows:
     - C is coproduct of A and B, and has two *injections* i and j from a -> c and b -> c
 -}
 
-i :: a -> c
-j :: b -> c
+i :: a -> Either a b
+i x = Left x
+j :: b -> Either a b
+j x = Right x
+
 
 {-
 the coproduct C is better than C' (who has i' and j') if there is a morphism m that goes C -> C'
 -}
-i' :: m . i
-j' :: m . j
+--     i' :: m . i
+--     j' :: m . j
 
 {-
 Formal Definition of Coproduct:
@@ -212,8 +215,8 @@ in Haskell, whereas the canonical product is the pair (,), Coproduct is Either
 data Either a b = Left a | Right b-}
 
 {-or this-}
-data myEither a b = Int a | String b
-myFactorizer :: (Int -> myEither Int String) -> (String -> myEither Int String) -> (Either Int String -> myEither Int String)
+data MyEither a b = Int a | String b
+myFactorizer :: (Int -> c) -> (String -> c) -> (MyEither Int String -> c)
 myFactorizer i j (Int a) = i a
 myFactorizer i j (String b) = j b
 {-this looks like it is pattern matching both the functions and the input for the last one (currying?)-}
