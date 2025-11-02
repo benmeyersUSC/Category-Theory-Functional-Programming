@@ -1,6 +1,19 @@
 
 main = putStrLn "Algebraic Types"
 
+
+data BenList a = Niz | Yee a (BenList a)
+{-
+x(a) = 1 + a(x(a))
+x(a) = 1 + a(1 + a(x(a)))
+x(a) = 1 + a + aa(x(a))
+x(a) = 1 + a + aa + aaa(x(a))
+x(a) = 1 + a + aa + aaa + aaa(x(a))
+...  = ...
+x(a) = 1 + a + ... + na(x(a))
+-}
+
+
 data Shape = Circle Float | Rect Float Float | Square Float
 
 area :: Shape -> Float
@@ -14,7 +27,10 @@ circ (Rect d h) = 2 * (d + h)
 circ (Square f) = 4 * f
 
 
--- CHALLENGE 
+
+
+
+-- CHALLENGES
 {-
  Show the isomorphism between Maybe a <-> Either () a
 -}
@@ -85,5 +101,14 @@ in these N of an order-family is as follows: A -> B or A -> _. B -> C or B -> _.
 AND it cannot be the case that more than one letter points to _ in a given list. 
 The list corresponds to the finite set of patterns you match for one of these functions
 in one of these isoomorphic pairs, and the order in which you match them. 
+
+    Orders:
+        A -> B -> C     or      B -> A -> C     (what about B -> C -> A? that is == A -> B -> C)
+
+    within an Order, we have the distinct lists (schemes for invertible maps):
+        ABC
+        BCA
+        CAB
 -}
+
 
