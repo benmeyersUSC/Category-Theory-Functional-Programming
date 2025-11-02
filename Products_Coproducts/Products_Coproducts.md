@@ -99,8 +99,8 @@
 - - there can be many products of two constituent elements, but they have different levels of *universality* or *reducedness*
 - - - *c* is better than *c'* if there exists a morphism *m* where
 - - - - m :: *c'* -> *c*
-- - - - *p* = *p'* . *m*
-- - - - *q* = *q'* . *m*
+- - - - *p'* = *p* . *m*
+- - - - *q'* = *q* . *m*
 
 - **Coproduct**
 - - reverse the arrows of *product* and you have a *c* with two injections from *a* and *b*
