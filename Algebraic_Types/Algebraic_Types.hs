@@ -1,4 +1,4 @@
-
+import Data.Void
 main = putStrLn "Algebraic Types"
 
 
@@ -25,6 +25,143 @@ circ :: Shape -> Float
 circ (Circle r) = 2 * pi * r
 circ (Rect d h) = 2 * (d + h)
 circ (Square f) = 4 * f
+
+
+
+
+
+
+{-
+An arbitrary number of types can be stored in nested tuples. 
+But it is the same thing as a single tuple/record with all of the
+types at the same level. This is shown first by deriving an isomorphism
+between any two packing schemes of the same data. 
+
+For three types, a, b, c, in this order, there are two ways to pack them:
+
+(a, (b, c)) and ((a, b), c)
+
+-}
+alpha :: (a, (b, c)) -> ((a, b), c)
+alpha (x, (y, z)) = ((x, y), z)
+
+alphaInv :: ((a, b), c) -> (a, (b, c))
+alphaInv ((x, y), z) = (x, (y, z))
+
+-- this compiles, hence we have an isomorphism
+
+{-
+We can see the creation of product types as a binary operation on two types
+The above then resembles the associativity seen in Monoids
+
+(a * b) * c = a * (b * c)
+
+However, whereas in Monoids, these two are truly equivalent, with product
+types, they are equal up to isomorphism. But to me, that is no deterrent. 
+Isomorphism is *effective* equality because of its very definition: you can
+always go from one to another with perfect fidelity. I don't need the fidelity
+handed on a silver platter of absolute equivalence. 
+
+
+If we are okay with the *isomorphic* nature of our Monoid-Product analogy, we
+can push further. In Monoids, we have a unit type that acts as identity when 
+operated with another object. In Product types, that is the Unit, the singleton
+set: ()...
+-}
+
+rho :: ((), a) -> a
+rho (_, x) = x
+
+rhoInv :: a -> ((), a)
+rhoInv x = ((), x)
+
+{-
+This also compiles, hence the isomorphism. 
+
+In Haskell, there is a much more general way to make product types:
+
+data Pair a b = P a b
+
+'Pair' is the type parameterized by two types. 'P' is the named value
+constructor. 
+-}
+data Pair a b = P a b
+
+stmt :: Pair String Bool            -- this constructs the type
+stmt = P "This sentence is" False   -- this creates a value
+
+{-
+RECORDS:
+A very useful way to make product types. 
+
+For example, if we wanted to make types representing Elements with their
+symbol, name, and atomic number, we could use a (,,) and just remember the order
+and such. But the following has the same functionality with built in bookkeeping.
+-}
+
+data Element = Element {
+    name :: String,
+    symbol :: String,
+    number :: Int
+}
+
+-- this is isomorphic to (String, String, Int):
+
+elemToTuple :: Element -> (String, String, Int)
+elemToTuple e = (name e, symbol e, number e)
+-- notice that these fields act as getters! projections!
+-- name :: Element -> String, etc.
+
+tupleToElem :: (String, String, Int) -> Element
+tupleToElem (n, s, i) = Element {name = n, symbol = s, number = i}
+
+-- this compiles!
+
+{-
+Now let's map out the equivalence of the Set of types and a monoid with
+'+'as the operator. Here, the binary operator is 'Either' and unit is Void:
+-}
+
+psi :: Either a Void -> a
+psi (Left x) = x
+psi (Right x) = absurd x
+
+psiInv :: a -> Either a Void
+psiInv x = Left x
+
+-- there we are!
+
+
+
+{-Finally, we have:
+    a x (b + c) = a x b + a x c
+-}
+
+prodToSum :: (a, Either b c) -> Either (a, b) (a, c)
+prodToSum (x, e) = case e of
+    Left y -> Left (x, y)
+    Right z -> Right (x, z)
+    
+sumToProd :: Either (a, b) (a, c) -> (a, Either b c)
+sumToProd e = case e of
+    Left (x, y) -> (x, Left y)
+    Right (x, z) -> (x, Right z)
+    
+-- <3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
