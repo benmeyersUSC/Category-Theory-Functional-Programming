@@ -38,7 +38,7 @@ public:
 class Rect : public Shape {
     float _d, _h;
 public:
-    Rect(float d, float h) : _d(d), _h(h) {}
+    explicit Rect(float d, float h) : _d(d), _h(h) {}
     float d() const { return _d; }
     float h() const { return _h; }
 

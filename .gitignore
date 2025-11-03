@@ -1,1 +1,5 @@
 /build/
+/.vscode/
+compile.sh
+run.sh
+.DS_Store
