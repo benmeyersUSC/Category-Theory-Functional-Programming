@@ -9,10 +9,9 @@ struct Node;
 struct Edge;
 
 struct Edge {
-	Node* from;
 	Node* to;
 	int len;
-	Edge(Node* f, Node* t, int l): from(f), to(t), len(l) {}
+	Edge(Node* f, Node* t, int l): to(t), len(l) {}
 };
 
 struct Node {
