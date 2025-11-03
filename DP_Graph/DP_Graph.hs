@@ -93,6 +93,12 @@ nodeList Nil = ((), "done")
 nodeList (Cons node rst) = 
     let (_, stringFromRest) = nodeList rst
     in ((), name node ++ "->" ++ stringFromRest)
+    
+strList :: List String -> Writer ()
+strList Nil = ((), "done")
+strList (Cons str rst) = 
+    let (_, stringFromRest) = strList rst
+    in ((), str ++ "->" ++ stringFromRest)
 
 
 nodeA :: Node
@@ -136,9 +142,64 @@ nodeA'' :: Node
 nodeA'' = addNode nodeA' _nodeB'' 3
 
 
+extractPath :: MemoMap -> Node -> Node -> List String
+extractPath mmap start end = case (name start == name end) of
+    True -> Cons (name end) Nil 
+    -- if we're at end, we just give the name of the end node...
+    -- this will make it into our list cuz recursive call calls Cons on this
+    
+    False -> -- otherwise, we need to chosoe the best child from here
+        let bestEdge = minChildDist (children start) mmap
+            -- best edge gets us the best edge
+            bestChild = to bestEdge -- and we extract the node
+        in Cons (name start) (extractPath mmap bestChild end)
+        -- and we recursively call extractPath on the rest of the list, 
+        --  now with start as the head of the list!
+
+
+-- we take in a list of children and map and return best edge
+minChildDist :: List Edge -> MemoMap -> Edge
+minChildDist (Cons ed Nil) mmap = ed
+-- assume lists isnt empty (cuz Final doesnt call this)
+-- ... if we have a one edge list, then that's the best
+
+minChildDist (Cons ed rst) mmap =  -- otherwise we gotta recurse
+    let bestOfRest = minChildDist rst mmap -- get the best of others
+        
+        thisCost = case (Map.lookup (name (to ed)) mmap) of
+        -- look up cost from currEdge. 
+            Nothing -> maxBound
+            Just d -> d + len ed
+            -- if exists (it does), then add ITS PATH TO END to path from prev
+            
+        restCost = case (Map.lookup (name (to bestOfRest)) mmap) of
+            Nothing -> maxBound
+            Just d -> d + len bestOfRest
+            -- same logic for here...recursively, we assume bestOfRest is found
+    in if thisCost < restCost then ed else bestOfRest
+    -- then if this edge is better than rest, choose it!
+
+
 main :: IO ()
 main = do
   let myEmptyMap = Map.empty :: Map String Int
-      myInt = fst (minDist nodeA'' nodeF Map.empty)
-  print myInt
+      (dist, mmap) = minDist nodeA'' nodeF Map.empty
+      pathList = extractPath mmap nodeA'' nodeF
+      pathString = snd (strList pathList)
+  print dist
+  putStrLn pathString
 
+
+{-
+Should make the graph interface nicer for sure.
+But overall very very happy with where this is. If you look at the DP_Graph.cpp file, you'll
+see something that is much easier to comprehend. We have a very nice generalized Memoize() function
+to turn any function into one which keeps a memo of its work. In this problem, that allows an efficient
+recursive + memo solution. Translating this stateful solution to Haskell is non-trivial. Instead of
+mutable state, we have to use pure functions which pass everything around. Other stateful aspects of the
+C++ are the min of a list, the looping of a list itself! These things all had to be done in Haskell. We
+did it with more and more functions! We cannot do a for-loop and call minDist on all of the nodes, but we
+can make a recursive function (minDists) that goes through each element (Edge) and calls minDist on it!
+Then for min, we similarly recursively process the list. It is just a totally different way to see the problem
+of looping and traversal. 
+-}
