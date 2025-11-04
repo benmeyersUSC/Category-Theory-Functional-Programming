@@ -41,8 +41,20 @@ In this repository, I collect my code and notes that accrue as I read "Category 
             * Sums of products (or products of sums, because they are the same thing!) can so well define what we know abstractly as concepts. 
             * Please check it out. 
 
-    * Finally, something beautiful happened when I did the challenge of showing that **a + a = 2 x a holds for types**. You can find this moment of discovery **[here](/Algebraic_Types/)**. 
+    * Finally, something beautiful happened when I did the challenge of showing that **a + a = 2 x a holds for types**. You can find this moment of discovery **[here](/Algebraic_Types/Algebraic_Types.cpp)**. 
 
+7. **[Functors](./Functors/)**
+    * This is a key chapter in the book; functors are the first meta step up from morphisms between objects to morphisms between categories! This is hard to even phrase! As always, the programming makes all of this vert concrete. The fact that we can explore category theoretical ideas with the category the set of types by writing compilable programs is tremendous. 
+    * Functors, like categories, have strict rules. Again, a functor maps a category to a category. This means:
+        * Objects mapped to Objects
+        * Morphisms mapped to Morphisms
+    * Such that the two key features of the two categories are preserved: **identity** and **composition**. Functors can also map objects and morphisms within a category; these are called **endofunctors**. In the category of types and functions, we can, for example, map the set of types to that of parameterized types. Thus **collections such as List or wrappers such as Maybe** can be seen as endofunctors. A list maps type a to a list of type a. To prove it is a functor, we have to prove that we can define a **fmap :: (a -> b) -> List a -> List b** function that can be interpreted in two ways:
+        * mapping a function from **a -> b** to a function that maps a **List a -> List b**
+        * mapping a function from **a -> b** *and* a **List a** to a **List b**
+    * It is clear that these alternatives are just a question of how curried you see this function. In Haskell and composable category theory, they are the same !
+    * This chapter also introduces **Equational Reasoning** to make proofs. In **[Haskell](./Functors/Functors.hs)**, I use it to prove several functors. One of which is a cool inductive proof for **Lists**. All that **Equational Reasoning** means is working through substitutions of two patterns on either side of Haskell's assignment operator (=). Check it out. 
+        * We also see **typeclasses** in **[Haskell](./Functors/Functors.hs)**: a beautiful way to define Java-like interfaces *and* assign types to these interface trees whenever you want. For the purposes of Functors, we define the Functor type class. The function that needs to be implemented is **fmap**!
+    * The coolest code that we wrote in this chapter is at the end of the **[C++](./Functors/Functors.cpp)** file where we define the **Reader Functor** that essentially just uses composition. It maps a type to a function that returns that type. We prove that Reader is a functor in **[Haskell](./Functors/Functors.hs)** equational reasoning proofs. Because of the limits of C++ template templates (you cannot partially specialize templates), we use the uncurried version of **fmap** to map a function from **A -> B** and a function **R -> A** to produce a function **R -> B**. All that **fmap** is is just composition: **R -> A -> B = R -> B**!
 
 * **[DP Graph Shortest Path](/DP_Graph/)**
     * This was an extremely special exercise. Egged on by the professor who pushed me to read **Category Theory for Programmers** further challenged me, now that I am getting used to Haskell, to try to compute the DP solution to the shortest path in a graph. 
