@@ -44,7 +44,11 @@ case Map.lookup (name someNode) distMap of
     Just dist -> -- already have it, use dist
     Nothing   -> -- need to compute it
 -}
-
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-- THE BRAINS
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 -- minDist will handle all of the orchestration
 -- takes in start, end, empty map...returns the minDist and the memo
 minDist :: Node -> Node -> MemoMap -> (Int, MemoMap)
@@ -87,6 +91,8 @@ getOrCompute fromNode toNode mmap = case (Map.lookup (name fromNode) mmap) of
 minInt :: List Int -> Int
 minInt Nil = maxBound
 minInt (Cons n rst) = min n (minInt rst)
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
     
 nodeList :: List Node -> Writer ()
 nodeList Nil = ((), "done")
