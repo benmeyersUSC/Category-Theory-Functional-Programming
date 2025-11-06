@@ -116,7 +116,8 @@ function<B(R)> fmap(function<B(A)> aToB, function<A(R)> rToA){
 
 // and this compiles !!!! :)
 
-
+float floatize(int n){return 1.0f * n;}
+int intize(bool b){return b ? 1 : 0;}
 
 int main(){
     // using vector fmap
@@ -131,6 +132,10 @@ int main(){
     for (int i : w){
         std::cout << i << " ";
     }
+
+    function<float(int)> floatize_func = floatize;
+    function<int(bool)> intize_func = intize;
+    function<bool(float)> floatizeBool = fmap(floatize_func, intize_func);
 
     return 0;
 }
