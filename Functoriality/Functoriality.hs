@@ -55,4 +55,19 @@ fb_to_is (x, y) = (floatToInt x, boolToString y)
 
 -- boom!
     
+
+
+-- and what about Coproduct?
+instance Bifunctor Either where
+    bimap f _ (Left x) = Left (f x)
+    bimap _ g (Right y) = Right (g y)
+    
+fORb_to_iORs :: Either Float Bool -> Either Int String  
+-- we could do:
+-- fORb_to_iORs (Left x) = Left (floatToInt x)
+-- fORb_to_iORs (Right y) = Right (boolToString y)
+-- or:
+fORb_to_iORs x = bimap floatToInt boolToString x
+
+    
     

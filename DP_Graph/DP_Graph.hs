@@ -55,25 +55,21 @@ minDist :: Node -> Node -> MemoMap -> (Int, MemoMap)
 minDist from toNode mmap = case (name from == name toNode) of
     True -> (0, mmap)  -- base case, we're at the end
     False ->           -- call on all children
-        let (dists, newMap) = minDists (children from) toNode mmap
-        in (minInt dists, newMap)   -- return minimum from kids!
+        let (dists, newMap) = minDists (children from) toNode (Nil, mmap)
+        in (minInt' dists, newMap)   -- return minimum from kids!
     
--- recursively works through children, actually computing dists
--- takes in children (List Edge), end, memo...returns dists (List Int) and memo
-minDists :: List Edge -> Node -> MemoMap -> (List Int, MemoMap)
-minDists Nil toNode mmap = (Nil, mmap)  -- done, just pass map
-minDists (Cons e rst) toNode mmap =  -- NOW WE PROCESS!
+-- tail recursively works through children, actually computing dists
+-- takes in children (List Edge), end, Accumulator(List, Memo)...returns (dists (List Int), memo)
+minDists :: List Edge -> Node -> (List Int, MemoMap) -> (List Int, MemoMap)
+minDists Nil toNode acc = acc  -- done, just pass map
+minDists (Cons e rst) toNode (accList, accMap) =  -- NOW WE PROCESS!
         
-        let (dist, newMap) = getOrCompute (to e) toNode mmap
+        let (dist, newMap) = getOrCompute (to e) toNode accMap
         -- add the node to the map, this is where we compute distance!
-
-            (restDists, newnewMap) = minDists rst toNode newMap
-            -- now recursively call minDists on rest of children
         
-        in (Cons (dist + len e) restDists, newnewMap)
-        -- append this node's minDist + its edge weight to the results of rec call
+        in minDists rst toNode (append accList (dist + len e), accMap)
+        -- add this call's work to the accumulator!...finish with a recursion!
         
-
 
 -- gets or adds to memo and returns it
 -- takes in start, end, memo...returns distance it gets from calling minDist!
@@ -87,10 +83,14 @@ getOrCompute fromNode toNode mmap = case (Map.lookup (name fromNode) mmap) of
         in (dist, Map.insert (name fromNode) dist newMap)
         -- insert computed distance at node's name
     
--- simple rec min int
-minInt :: List Int -> Int
-minInt Nil = maxBound
-minInt (Cons n rst) = min n (minInt rst)
+
+--tail rec:
+minInt :: List Int -> Int -> Int
+minInt Nil n = n
+minInt (Cons x rst) n = minInt rst (min x n)
+
+minInt' :: List Int -> Int
+minInt' lst = minInt lst maxBound
 -----------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------
     
