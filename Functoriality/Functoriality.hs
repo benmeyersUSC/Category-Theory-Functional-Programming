@@ -355,6 +355,9 @@ instance Bifunctor_ Snd where
 --  the datatype so that it is? 
 
 -- hmm...it is really just List (Key, Value). List is functorial and Pair is Bifunctorial....
+-- but not REALLY: a fundamental property is unique keys. So turning it into a [(k,v)] would make it
+-- bifunctorial, but we would lose the unique keys. How can we assure that any function to map K-K' would 
+-- be 1-1?
 
 
 
