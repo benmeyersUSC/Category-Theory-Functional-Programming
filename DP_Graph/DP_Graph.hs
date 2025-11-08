@@ -67,7 +67,7 @@ minDists (Cons e rst) toNode (accList, accMap) =  -- NOW WE PROCESS!
         let (dist, newMap) = getOrCompute (to e) toNode accMap
         -- add the node to the map, this is where we compute distance!
         
-        in minDists rst toNode (append accList (dist + len e), accMap)
+        in minDists rst toNode (append accList (dist + len e), newMap)
         -- add this call's work to the accumulator!...finish with a recursion!
         
 

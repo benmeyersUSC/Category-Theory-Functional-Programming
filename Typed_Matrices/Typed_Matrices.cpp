@@ -1,5 +1,5 @@
 #include <utility>
-
+#include <iostream>
 template<int R, int C>
 class Matrix {
 private:
@@ -39,6 +39,7 @@ public:
                 result.Data(i, j) = data[i][j] * scalar;
             }
         }
+        return result;
     }
 
     Matrix<R,C> operator/(float scalar){
@@ -52,6 +53,7 @@ public:
                 result.Data(i, j) = data[i][j] + other.Data(i, j);
             }
         }
+        return result;
     }
 
     Matrix<R,C> operator-(Matrix<R,C> other){
@@ -61,6 +63,7 @@ public:
                 result.Data(i, j) = data[i][j] - other.Data(i, j);
             }
         }
+        return result;
     }
 
     Matrix<R,C> operator+(float bias){
@@ -70,6 +73,7 @@ public:
                 result.Data(i, j) = data[i][j] + bias;
             }
         }
+        return result;
     }
     
     Matrix<R,C> operator-(float bias){
@@ -78,11 +82,25 @@ public:
 };
 
 
+
+template<int A>
+struct Num {static constexpr int value = A;};
+template<int C, int D>
+   Num<C*D> operator*(Num<C> a, Num<D> b){
+    return Num<C*D>{};
+}
+
 int main() {
     Matrix<16, 32> A;
     Matrix<32, 9> B;
 
     Matrix<16,9> C = A * B;
     Matrix<16,9> D = C + C;
+    
+
+    auto x = Num<9>{} * Num<3>{};
+    std::cout << decltype(x)::value << '\n';  
+
+
     return 0;
 }
