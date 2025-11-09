@@ -67,3 +67,54 @@ In this repository, I collect my code and notes that accrue as I read "Category 
     * I thought I would use a kind of monad to keep track of the path as I went through, but decided first to just get the distance, not worrying about recovering the path. I realized that I could just keep track of the *length* of the shortest path and a memo map as a tuple. This was a big conceptual jump: I can actually structure this somewhat similarly to **[C++](./DP_Graph/DP_Graph.cpp)**, but instead of the internal stateful memo in the function, we just pass the map around. I wrote the main orchestrating function to chew through the graph until we reach the end (until from == to). The base case is nice and easy, then in the recursive case we need to call **minDist** on all children then take their min. So we need a **minInt** function and a function which will loop through children and call **minDist** on them! It is this co-recursion that I find so beautiful. A hierarchy of co-dependent recursive calls. Tremendous. 
     * It turns out that even in that function to call **minDist** on each child, we would not yet be calling **minDist**. We need to use our memo, so we write a **getOrCompute** function. This is where we get our DP and this is where **minDist** is actually called! We get the current edge's full distance, add it to a list-distances-of-the-original-caller's-children, which is then reduced by **minInt**. 
     * I will not spell the whole thing out; look at **[the code](./DP_Graph/DP_Graph.hs)**! But the final beautiful piece was when I realized that it would only be satisfying to get the path itself, not just the distance. I was annoyed because I thought I'd have to rework the whole algorithm, but no! The **MemoMap** we create contains all of the information for each node! So we can now traverse greedily forward through the ***MemoMap***! Just fantastic stuff. 
+
+* **[Fixed Points and Recursion](./Fixed_Points_Recursion/)**
+    * Wow. This was the most exciting fruit yet to sprout from my learning Category Theory and Functional Programming. And unsurprisingly, no fault of Bartosz, this fruit was one I found on my own exploration. Having Claude as a partner in curiosity was also a necessary prerequisite. When you actually want to understand something and you have a disciplined hunger to do so, using an LLM is riskless. If Claude spits an advanced answer that is over my head, I gain nothing. You tamper them down and they can be such perceptive teachers. 
+    * Anyway, I was working with the **[Prelist functor from the Functoriality chapter](./Functoriality/Functoriality.hs)** and thinking about the bread crumb Bartosz left: **Prelist** has something to do with ***Fixed Points***. This was the first time I heard this term in Category Theory and it immediately stole my attention. 
+    * What does **Prelist** have to do with **Fixed Points**? I knew we wrote it specifically as a version of **List** that had no recursive definition. We simply factored the recursion out:
+        * data Prelist a b = Nil | Cons a b
+        * instead of
+        * data List a = Nil | Cons a (List a)
+    * This is suggestive...immediately you see that if you simply passed a **List a** as the second argument (of type ***b***) of **Prelist a**, you will have your **List a**...So we apply the functor [**Prelist a**] to the type [**List a**] and we get [**List a**]. This is our fixed point! [**List a**] is invariant (in terms of type) when passed through the [**Prelist a**] functor! 
+    * So the relationship between recursive types and fixed points is clear and powerful: recursive types are fixed points for their factored-out versions. It turns out (a hunch confirmed by Claude, not a result I have really earned yet beyond belief) that every recursive structure has such a Functor with respect to whom it is a fixed point! 
+        * Here is the recipe: 
+            1. Write your recursive type
+            2. Add a type parameter (say **r**) and replace all recursive calls with **r**
+            * That's it! Your recursive type is now the fixed point to this lazily recursive version you've just created with **r**. 
+        * Examples:
+            * Recursive lists:
+                1. data List a = Nil | Cons a (List a)
+                2. data Prelist a ***r*** = Nil | Cons a ***r***
+            * Recursive trees:
+                1. data Tree a = Leaf a | Tree (Tree a) (Tree a)
+                2. data Pretree a ***r*** = Leaf a | Tree ***r r***
+            * Natural numbers!
+                1. data Nat = Zero | Succ Nat
+                2. data Prenat ***r*** = Zero | Succ *** r***
+    * So what is the definition of the fixed point with respect to functors? 
+        * **Fix f = f (Fix f)**
+            * *when you apply the functor **f** to its fixed point, you get the fixed point back!*
+    * But this is more than just a sensible equation with symbols for us to read in English. In **[Haskell](./Fixed_Points_Recursion/Fixed_Points_Recursion.hs)**, it is literally a recipe for *lazily* constructing the recursive structure. Look at this:
+        * Fix (Prenat r) 
+        * = Zero | Succ (Fix Prenat r)
+        * = Zero | Succ (Zero | Succ (Fix Prenat r))
+        * = Zero | Succ (Zero | Succ (Zero | Succ (Zero | Succ (Fix Prenat r))))
+        * ...
+        * At a certain point, the **Prenat r** type will equal **Zero** and we will collapse to a nested chain of **Succ**essorship! These are Church Numerals! 
+    * With this powerful relationship between recursive data structures and fixed points you can create functions like **[foldr](./Fixed_Points_Recursion/Fixed_Points_Recursion.hs)** on **Prelist** which collapses the entire recursive structure of **Prelist**'s fixed point by some algebra. 
+        * Algebra :: F a -> a
+        * It removes one layer of structure from a Functor'ed type
+    * **[foldr is then genralized to cata](./Fixed_Points_Recursion/Fixed_Points_Recursion.hs)**, the general Catamorphism, takes in an **algebra** on a functor **F** and **Fix F** and then returns the type (the type parameterized by **F**) collapsed by the **algebra**. 
+        * Check this stuff out in the **[Haskell file](./Fixed_Points_Recursion/Fixed_Points_Recursion.hs)**, it is much richer there!
+    * Finally, the definition of the fixed point of a functor, **Fix f = f (Fix f)**, reminded me acutely of the **Y combinator** from **Lambda Calculus**. I have previously built a **[Lambda Calculus Interpreter](https://github.com/benmeyersUSC/LambdaCalculusInterpreterPython)**, and in these explorations, I heard of the **Y combniator**, the enabler of recursion in **LC**. I knew it was also called the **Fixed Point Combinator** (no idea why). I implemented it on my primitive interpreter and ran right through Python's recursion depth! I couldn't really understand what it was doing so I moved on. Now, though, it pops back up in my head...Look at its definition:
+        * **Y f = (λx. f (x x)) (λx. f (x x))**
+            * *syntax in Lambda Calculus is: [λx. operation(x)]...it is a lambda function on the bound parameter x! When a function is passed as an argument to Y, you get a lambda on x that applies f to x twice...*
+            * When we unpack this by one layer, we go from
+        * **= (λx. f (x x)) (λx. f (x x))**
+            * to
+        * * **= f ((λx. f (x x)) (λx. f (x x)))**
+            * You see? The second parenthesized copy was the argument *x* passed to the first one. To write this line above, I *literally* wrote **f (x x)** and then copied **(λx. f (x x))** and replaced the **x**s with it! Do you see the fixed point? Do you see this?:
+        * **= f (Y f)**!
+    * So the **Y Combinator** is the **Fixed Point Combinator** is the **Fix f** type definition! Whereas **LC** works (in this context) without types and just with functions, Haskell's fixed point works on functors. **YC** unfolds lazy recursive versions of functions in **LC**. **Fix f** unfolds lazy recursive versions of *functors* in **Haskell** and **CT**. 
+    * Finally (again), fixed points remind us of **Gödel**. I have more coming on this, but at the very least: Gödel's formula **G** has fixed point characteristics when you try to de-Gödelize the bound number in it. That is: **G = 'g is not provable'** and **g** is the **Gödel-Number of G**. So you de-Gödelize **g** and you get **G** again...but **g** is *in* **G**!
+        * See a more **[concrete sketch](./Fixed_Points_Recursion/Fixed_Points_Recursion.hs)** of this!
