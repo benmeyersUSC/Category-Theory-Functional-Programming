@@ -63,6 +63,8 @@ In this repository, I collect my code and notes that accrue as I read "Category 
 9. **[Function_Types](./Function_Types/)**
     * This might have been the most beautiful chapter yet. I had already known some aspects of the Curry-Howard isomorphism, for instance seeing the intuition that a function from A -> B is a proof of the implication "given A, B is true" by construction. However learning about the exponential object == function types really drove it home. I will not discuss it in detail here, but please look at the **[Haskell file](./Function_Types/Function_Types.hs)**! The correspondence with algebra is beyond beautiful. 
 
+10. **[Natural_Transformations](./Natural_Transformations/)**
+
 * **[DP Graph Shortest Path](/DP_Graph/)**
     * This was an extremely special exercise. Egged on by the professor who pushed me to read **Category Theory for Programmers** further challenged me, now that I am getting used to Haskell, to try to compute the DP solution to the shortest path in a graph. 
     * As always (and especially for a problem with lots of state), I started in **[C++](./DP_Graph/DP_Graph.cpp)**. I tried to keep in mind that I wanted to then go and make this functional, but I started just thinking imperatively. I first implemented a recursive solution with no DP. Then I remembered the **[memoize() function from Types_Functions.cpp](./Types_Functions/Types_Functions.cpp)** and realized that if I memoized my recursive solution, that it would become much more efficient. If you run the **[C++](./DP_Graph/DP_Graph.cpp)** file, you'll see the first run (which uses the memo) and then the non-memo version. In the first, we only call **minDist** on each node once! In the latter, we call it many many times. 
