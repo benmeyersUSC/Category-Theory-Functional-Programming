@@ -62,3 +62,91 @@ g = alpha . f . delta
     separating the cases where ALPHA.F.DELTA CANNOT BE REPRESENTED and those where ALPHA.F.DELTA MUST BE REPRESENTED. 
     
 -}
+
+
+
+{-
+
+    I came across a fantastic version of Lawvere's Theorem. It uses 'function' notation and thinking, but, of course, everything
+    applies at the categorical level and therefore reaches more than just the domain of functions. It cuts through the 
+    diagonalization examples (which are of course helpful motivators) and plainly shows that fixed points and self-reference
+    go hand in hand. Here is the setup:
+
+    n :: Y -> Y
+    f :: X -> Y^X :: X x X -> Y :: X -> X -> Y
+    -- f is (weakly) surjective, which means that its codomain (Y^X) is fully matched with input members of X
+
+    Let
+
+    f_D(x) = n(f(x)(x))
+
+    Theorem: if there exists a d::X such that f(d) = f_D then n(v_d) = v_d, where v_d = f_D(d)
+    -- i.e. if f_D is one of the functions that f returns, then f_D(d) is a fixed point of n
+
+    Why? Let's show with substitution:
+
+    >> sub in d for x
+    f_D(d) = n(f(d)(d))
+
+    >> sub in f_D for f(d)
+    f_D(d) = n(f_D(d))
+
+    VOILA
+
+    f encodes functions from X -> Y with X values. So we pass d::X and get f_D(x) = f(d)(x). Now we can compose
+    this with n to get f_D(x) = n(f(d)(x)). Since f is surjective (any X->Y is encoded with some X), then there must
+    be the specific function f_0 such that f_0(x_0) = n(f_0(x_0)(x_0)). This is because n . f_0 :: X -> Y and must be 
+    seen by f. But f_0(x_0) is still a function on X, so let's pass in x_0 to get: f(x_0)(x_0) = n(f_0(x_0)(x_0)). 
+    That's the fixed point! The composition n . f_0 could only possibly be a function seen by f iff n has a fixed point!
+    
+    It is so clear and obvious that it often slips my understanding. In Gödel, Cantor, Turing, Tarski, and Russell, this 
+    concept is made complex by the specific functions f_D and n. But they are all benefitting from this same principle
+    so clearly shown by Lawvere. When f can encode a shifted diagonal, then that shift necessarily must have a fixed point. 
+    Just by substituting, we see that if n didn't have a fixed point, then we could never construct a f_D(x) such that it
+    equals n(f(x)(x)). If n had a decisive impact, then it could not be ignored. But if there is just one Y that it leaves
+    unchanged, then we can build this maniacal f_D. 
+-}
+
+
+{-
+
+f :: X -> (X -> Y) :: X -> Y^X
+g :: Y -> Y
+
+X = Natural Numbers (Gödel Numbers)
+Y = {0,1} (Provable, not Provable)
+
+f(p:X) = p(n:X)
+f(p:X)(n:X) = p(n) 
+Where p(n) means passing the number, n, into the 1-free-variable predicate encoded into Gödel Number p. 
+When we close a predicate by passing a number, we get a Sentence.
+
+Now let
+
+g(s:Y) = if s then 0 else 1
+
+d(p:X) = f(p)(p)
+
+Prov(p:X) =  Ea: Proof(a, p)
+-- there is a proof string, a, for p
+
+U(p:X) = g(Prov(d(p)))
+-- U is a predicate on one number. That number, again, is a Gödel Number of a sentence
+-- Since U is a predicate on one variable, we can Gödel Number it as well. 
+
+P = GödelNum(U)
+
+G = d(P) 
+-- this means passing U's Gödel Number into U
+
+....so
+
+U(P) = -Prov(d(P))
+
+and d(P) = G
+
+U(P) = -Prov(G)......but G is d(P) and P is U's GödelNumber...so G is equivalent to U(P)
+
+G = -Prov(G)
+fixed point!
+-}
